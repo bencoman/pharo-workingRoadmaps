@@ -4,9 +4,7 @@ It would be interesting to review these lists against Pharo to understand how we
 #A Wish List - David R. MacIver
 http://www.drmaciver.com/2015/07/a-wish-list/
 
-Here’s a laundry list of stuff that would feature in my dream language. Advance warning that I am a grumpy old man and this is a super boring list that contains almost no cool features. Also it’s not in any particular order of priority – it’s mostly the order I thought of things in – and it’s definitely not complete – it’s just the stuff I thought of before I got bored of writing this post.
-
-Also, most of these are things that you can’t without get large amounts of time, effort and money. They’re boring, not easy, and if anything them being boring makes them harder because you can’t really get people excited about working on them.
+Here’s a laundry list of stuff that would feature in my dream language. Advance warning that I am a grumpy old man and this is a super boring list that contains almost no cool features.  Most of these are things that you can’t without get large amounts of time, effort and money. They’re boring, not easy, and if anything them being boring makes them harder because you can’t really get people excited about working on them.
 
 ### Community
 
@@ -14,35 +12,62 @@ Community is so important. Here is what I want out of a programming language com
 
 1. Large. Small communities are nice but I want a community who I can share the work load with, and a small community isn’t it.
 
+  * Pharo: Community is small (say compared to Python)
+
 2. Friendly. Elitism is toxic, and a community that isn’t helpful to beginners or goes on and on about how they’re super smart for using this language that other people don’t get is the worst.
+
+  * Pharo: Community is generally very friendly and helpful to beginners.  Historically Smalltalk has a reputation for elitism we need to overcome. I don't see this on the mail list much, but occasionally someone new drops non-constructive criticism on some intrinsic paradigm (like not coding in text files), and they can get short-shift.  To me, this is not so much elitism but busy people managing the noise level of things they can do something about.  Constructive criticism is welcome.  
 
 3. Diverse, and committed to it. Codes of Conduct for everyone all round.
 
+  * Pharo: No formal code of conduct.  Havn't seemed to need it so far, but perhaps a reflection of a small community. Could we do better?
+
 4. Committed to quality. Documentation matters. Testing matters. We *like* having high quality libraries and we’re prepared to put the work (and, where possible, money) in to get them.
 
+  *  Pharo: Good Issue tracking and CI testing infrastructure. Documentation has lagged a bit but is improving.
+  
 ### Packaging Infrastructure
 
 Good packaging infrastructure is vital. And so hard to do. Basically nobody does it well. Packages should be:
 
 1. Easy to create new packages. If a problem could be solved by creating a new package it should be easier to solve by creating a new package than by not. You should never find yourself going “oh god but I have to write all that XML”.
 
+  * Pharo: Very easy. Open System Browser > right-click > Add Package, type name, click Ok.  
+  Open Monticello > Select package > Select local or remote repository, click Save. 
+
 2. Versioned, with version constraints between dependencies automatically resolved
 
-3. Local to a project
-  * without a lengthy compile each time you install into a new project
-  * no pollution in the global install namespace
+  * Pharo: ?
+
+3. Local to a project: a) without a lengthy compile each time you install into a new project; and b) no pollution in the global install namespace
+  
+  * Pharo: 
+  a) Takes a while to compile newly loaded package.  Could be quicker.
+  b) Not sure on global namespace.
 
 4. Easy to mirror
 
+  * Pharo: ?
+
 5. But with a good standard central repository
+
+  * Pharo: has Configuration / Catalog Browsers.
 
 6. Clearly marked for stability
 
+  * Pharo: ?
+
 7. Try hard at maintaining compatibility between package versions
 
+  * Pharo: ?
+  
 8. Easy to write in a way that is portable to other versions of the language (e.g. don’t be Scala where a package compiled for one version of the language doesn’t work with any others, even between point releases)
 
+  * Pharo: ?
+
 9. Easy to write in a way that is compatible with multiple operating systems.
+
+  * Pharo: I'm sure this is fine but some examples would be good.
 
 Most languages eventually get something which is approximately this. Cabal with sandboxes, pip with virtualenv, ruby with bundler, all manage most of this (mirroring is typically not handled well. I think maybe it is in Cabal but it’s not in python or ruby).
 
@@ -50,11 +75,19 @@ Most languages eventually get something which is approximately this. Cabal with 
 
 1. There should be a standard test runner that works sufficiently well that nobody bothers writing their own unless they’re someone with an rspec fetish, and the community should politely suggest that maybe this isn’t adding very much to the testing workflow.
 
+  * Pharo: TestRunner built in. xUnit infrastructure was invented on Smalltalk platform. (Mock framework libraries use the same TestRunner?)
+
 2. There should be good code coverage tools. They should work reliably with minimal overhead (if it takes twice as long to run under coverage then this is very sad and people will use it less). It should be able to do branch coverage. It would be great if it could do predicate coverage. More features – e.g. stats on paths and traces – would be amazing.
+
+  * Pharo: ?
 
 3. It would be fantastic to steal the CPAN feature that tests run on install and report back pass/fail information to somewhere sensible, which means you want testing integrated with the packaging system. Given the aforementioned versioning constraints and per project installs you probably only want to do this one per distinct set of versions of dependent libraries.
 
+  * Pharo: This sounds like an interesting idea that we lack(?).
+
 4. *Obviously* all languages should have a Quickcheck like testing tool (if I didn’t think this I probably wouldn’t have sunk more than six months of free full time labour into making Hypothesis).
+
+  * Pharo? Do we have anything like this? 
 
 ### Good tools for working with source code
 
