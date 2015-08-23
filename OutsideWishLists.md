@@ -10,13 +10,13 @@ Here’s a laundry list of stuff that would feature in my dream language. Advanc
 
 Community is so important. Here is what I want out of a programming language community:
 
-1. Large. Small communities are nice but I want a community who I can share the work load with, and a small community isn’t it.
+1. Large. Small communities are nice but I want a community who I can share the work load with, and a small community isn’t it, where the the chances are low that someone has solved a common problem before me.
 
-  * Pharo: Community is small (say compared to Python)
+  * Pharo: Pharo community is smallish, but wrt common problems can be drawn from the 30+ years of history of the wider Smalltalk community.
 
 2. Friendly. Elitism is toxic, and a community that isn’t helpful to beginners or goes on and on about how they’re super smart for using this language that other people don’t get is the worst.
 
-  * Pharo: Community is generally very friendly and helpful to beginners.  Historically Smalltalk has a reputation for elitism we need to overcome. I don't see this on the mail list much, but occasionally someone new drops non-constructive criticism on some intrinsic paradigm (like not coding in text files), and they can get short-shift.  To me, this is not so much elitism but busy people managing the noise level of things they can do something about.  Constructive criticism is welcome.  
+  * Pharo: Our community is generally very friendly and helpful to beginners.  However historically Smalltalk has a reputation for elitism that we need to overcome. I don't see much elitism on the mail list, but occasionally someone new appears on the mail list handing out non-constructive criticism on some intrinsic paradigm (like working within an Image), and they can get a curt response.  To me, this is not so much elitism as it is busy people trying ot manage the noise level on the list.  Constructive criticism is welcome.  
 
 3. Diverse, and committed to it. Codes of Conduct for everyone all round.
 
@@ -39,23 +39,27 @@ Good packaging infrastructure is vital. And so hard to do. Basically nobody does
 
   * Pharo: ?
 
-3. Local to a project: a) without a lengthy compile each time you install into a new project; and b) no pollution in the global install namespace
-  
-  * Pharo: 
-  a) Takes a while to compile newly loaded package.  Could be quicker.
-  b) Not sure on global namespace.
+3. Local to a project: 
 
+   a) without a lengthy compile each time you install into a new project; 
+
+ * Pharo: Takes a while to compile newly loaded package.  Could be quicker.
+
+   b) no pollution in the global install namespace, so that multiple versions of a package installed because different projects depend on different versions should never cause problems. This is particularly bad when you consider version constraints that are imposed by packages depending on other packages.
+  
+ * Pharo: Has no facility for this.  Perhaps something that needs to be looked out.
+ 
 4. Easy to mirror
 
   * Pharo: ?
 
 5. But with a good standard central repository
 
-  * Pharo: has Configuration / Catalog Browsers.
+  * Pharo: New Configuration / Catalog Browsers provide this facility.
 
 6. Clearly marked for stability
 
-  * Pharo: ?
+  * Pharo: Metacello Configurations generally provided for both "stable" and "bleeding edge" -- including differences between OS platforms.  But what tools does Metacello relate to in other progamming languages.
 
 7. Try hard at maintaining compatibility between package versions
 
@@ -93,21 +97,37 @@ Most languages eventually get something which is approximately this. Cabal with 
 
 1. I’m mostly very indifferent to Go, but there’s one feature that I think it gets so very right and wish everyone else would steal right now. Your standard library should include a precise parser which for any valid (or, ideally, nearly valid) source code you can parse to an AST then print the AST as a bytewise identical file to the original.
 
+  * Pharo: Guessing Pharo should excel here.
+
 2. It should also include a pretty printer that outputs code in a “standard” and correct format.
 
+  * Pharo: Does have a pretty printer.
+  
 3. It should also be easy to make tools that use the AST representation to make changes to your source code.
 
+  * Pharo: ? links to any tutorials ?
+  
 4. Basically: I want good refactoring and reformatting tools, and in order to get that I want standard ways of building them.
+
+  * Pharo: Guessing Pharo shold excel here. 
 
 5. I also want good static analysis tools. A well designed language obviates the need for a lot of these, but there’s always room for improvement.
 
+  * Pharo: May be lacking, but are there any beneficial examples?
+  
 ### Foreign Function Interface
 
 1. There should be a standard, good, foreign function interface which makes it easy to bind to C libraries which does not expose internals. 
 
+  * Pharo: ?
+
 2. In reality almost every language has too many ways to do it, none of them good.
 
+  * Pharo: This seems true with FFI, Alien, NativeBoost - but there is work underway to integrate these. (Links?)
+
 3. Relatedly, *please* run valgrind clean by default. I know it’s a pain, and I know it hurts some microbenchmarks, but it makes debugging code integrated with C so much easier.
+
+  * Pharo: Maybe this is a good idea we could adopt?
 
 ### Text handling
 
@@ -115,27 +135,47 @@ Text is:
 
 1. Efficiently represented.
 
+ * Pharo: ?
+
 2. Always immutable (Note: Having a separate editable representation for text is perfectly reasonable, but it’s not your default).
 
+  * Pharo: Perhaps something we should consider? Any arguments not to?
+
 3. Always unicode.
+ 
+ * Pharo: Perhaps something we should consider? Any arguments not to?
 
 4. Always understood to be a variable length encoding that you cannot index into by an offset.
 
+  * Pharo: ???
+  
 5. Easy to read and write to a variety of encodings.
 
-6. Anything else is wrong and you are a sinner for contemplating it.
+  * Pharo: ???
+
+Anything else is wrong and you are a sinner for contemplating it.
 
 ### Equality works correctly
 
 1. There is a single operator you use for equality. You do not use different ones for different types.
 
+  * Pharo: True.
+
 2. Differently typed values are never equal. Yes I know this violates the Liskov Substitution Principle. I don’t even slightly care. Ideally comparing different types for equality should be an error.
 
+  * Pharo: ??
+  
 3. Equality is reflexive. That is, x == x, always. I don’t know what to do about NaN here. So far my most practical solution involves a time machine. My second most practical answer is “Ignore IEEE and deal with the resulting confusion”.
 
-4. Equality is symmetric.
+  * Pharo: ??
+  
+4. Equality is symmetric 
+
+  * Pharo: ??
 
 5. Equality is transitive.
+
+  * Pharo: ??
 
 ### Good numeric hierarchy
 
@@ -143,39 +183,57 @@ Your language should be able to represent:
 
 1. Signed and unsigned fixed size integers of various machine sizes
 
+  * Pharo: ??
+
 2. Arbitrary precision integers
+
+  * Pharo: True.
 
 3. Double and single precision floats
 
+  * Pharo: ??
+
 4. Arbitrary precision rational numbers
+
+  * Pharo: ??
 
 5. Fixed width decimal arithmetic
 
-These should all be easy to convert to eachother (but not compare equal if they are of different types!), and they should certainly all consistently use standard operators.
+  * Pharo: ??
 
-Most of this should be implementable as libraries rather than needing to be baked in to the language.
+These should all be easy to convert to eachother (but not compare equal if they are of different types!), and they should certainly all consistently use standard operators. Most of this should be implementable as libraries rather than needing to be baked in to the language.
 
 ### Packed data
 
 1. At some point you are going to need to deal with arrays of “primitive” types – bytes, doubles, machine words, etc. If you cannot represent this in an efficient way when you come to do this, you will be sad. Ideally you want to do this in a way that makes it easy to interact with the aforementioned foreign function interface.
 
+  * Pharo: Not clear what this describes.
+ 
 2. Ideally this would also support arrays of structs of some sort. I don’t really care about representing structs as individual values efficiently, but for large arrays of data it matters.
+
+  * Pharo: Not clear how this applies.
 
 ### Namespacing and scoping
 
 1. Everything should have a clear, lexical, scope. It should be obvious where a variable is introduced. The answer should never be “into the global namespace”. It should be hard to make typos and not notice.
 
   As far as I can tell, basically the only languages which get this right are statically typed or a lisp. (ETA: Apparently perl with use strict also gets this right).
+  
+    * Pharo: ??
 
 ### Higher order functions
 
 1. Languages should have first class functions, and higher order functions like map or filter.
 
   This one… is doing pretty well actually. This debate is over and we won. The last time I checked, Java was the only mainstream language that didn’t do this. Since Java 8 last year there are no mainstream languages that don’t do this.
+  
+  Pharo: Has first class functions. How are "Map, Filter, Reduce" facilities supplied by Pharo? 
 
 ### A REPL
 
 1. Not much to say here except that a REPL is so invaluable to how I work that it’s really painful using languages without one. I can do it of course, but it tends to involve writing lots of tiny little throwaway programs that act as a poorer version of a REPL.
+
+Pharo: No command line REPL, but can GUI Workspace/Playground/Transcript be considered a super-REPL ?
 
 ### Take typing seriously
 
@@ -183,14 +241,23 @@ Most of this should be implementable as libraries rather than needing to be bake
 
 Note: Type system wars in the comments will not make it through moderation.
 
+* Pharo: Dynamic & strong typing. No implicit conversions between types.
+
 ### Solid, high performance, implementation
 
 Why are we all using slow and unreliable implementations? It makes me really sad.
 
 I mean, I do know the answer, it’s because writing a concurrent garbage collector and a high performance compiler is hard and reusing language-specific VMs mostly works but has its own set of problems.
 
-Basically I want garbage collections and threading to just work, and I want to be able to write code that looks as if it should be reasonably low level and have it not produce something that’s hundreds of times slower than the equivalent C. If you can compile high level abstractions down to low level code, that’s great too.
+  * Pharo: ?
 
+Basically I want garbage collections and threading to just work, 
+
+  * Pharo: ? 
+
+and I want to be able to write code that looks as if it should be reasonably low level and have it not produce something that’s hundreds of times slower than the equivalent C. If you can compile high level abstractions down to low level code, that’s great too.
+
+  * Pharo: ?
 Yes I know that low level concurrency is passé and we’re all doing message passing now. A good message passing API on top of the concurrency primitives would be great, but I want the primitives too.
 
 ### Rich standard library
@@ -201,15 +268,25 @@ The standard library should have all of the normal really boring things we need 
 
 1. File system access
 
+  * Pharo: True
+
 2. Sockets – client and server
 
-A solid HTTP client (I’m ambivalent as to whether there should also be a server. Experience of how little ones from the standard libraries of existing languages are used suggests no)
+  * Pharo: True
 
-3. Parsing for standard formats – XML, JSON, etc.
+3. A solid HTTP client (I’m ambivalent as to whether there should also be a server. Experience of how little ones from the standard libraries of existing languages are used suggests no)
 
-4. Good concurrency primitives
+  * Pharo: True - client and server
 
-5. Pseudo random number generators
+4. Parsing for standard formats – XML, JSON, etc.
+
+  * Pharo: Available from the Configuration Browser, but not integrated. Shoudl some be?)
+
+5. Good concurrency primitives
+
+  * Pharo: For its own green threads, these work well.
+
+6. Pseudo random number generators
 
 6. Invoking and running external programs
 
